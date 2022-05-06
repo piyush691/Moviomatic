@@ -22,7 +22,6 @@
 		827E0A86280DB49C005322E3 /* GeneralCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827E0A84280DB49C005322E3 /* GeneralCollectionViewCell.swift */; };
 		827E0A87280DB49C005322E3 /* GeneralCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 827E0A85280DB49C005322E3 /* GeneralCollectionViewCell.xib */; };
 		827E0A89280DD442005322E3 /* GeneralViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827E0A88280DD442005322E3 /* GeneralViewModel.swift */; };
-		8280FC9A28180E4A00EFB99C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8280FC9928180E4A00EFB99C /* Kingfisher */; };
 		828ADFEB27F81AB7001D9604 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828ADFEA27F81AB7001D9604 /* AppDelegate.swift */; };
 		828ADFED27F81AB7001D9604 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828ADFEC27F81AB7001D9604 /* SceneDelegate.swift */; };
 		828ADFEF27F81AB7001D9604 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828ADFEE27F81AB7001D9604 /* ViewController.swift */; };
@@ -44,6 +43,7 @@
 		82A96F812805980B009CA7C0 /* CastCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82A96F7F2805980B009CA7C0 /* CastCollectionViewCell.xib */; };
 		82BC7F1127FD462300B6B7AF /* MovieContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC7F1027FD462300B6B7AF /* MovieContentVC.swift */; };
 		82BC7F1327FD49BA00B6B7AF /* MovieContentVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82BC7F1227FD49BA00B6B7AF /* MovieContentVC.storyboard */; };
+		82E2441128252688003FE21E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 82E2441028252688003FE21E /* Kingfisher */; };
 		82F3771F28150FA4001A4E27 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F3771E28150FA4001A4E27 /* SearchVC.swift */; };
 		82F37724281525A4001A4E27 /* RecentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F37722281525A4001A4E27 /* RecentTableViewCell.swift */; };
 		82F37725281525A4001A4E27 /* RecentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82F37723281525A4001A4E27 /* RecentTableViewCell.xib */; };
@@ -100,7 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8280FC9A28180E4A00EFB99C /* Kingfisher in Frameworks */,
+				82E2441128252688003FE21E /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +316,7 @@
 			);
 			name = Moviomatic;
 			packageProductDependencies = (
-				8280FC9928180E4A00EFB99C /* Kingfisher */,
+				82E2441028252688003FE21E /* Kingfisher */,
 			);
 			productName = Moviomatic;
 			productReference = 828ADFE727F81AB7001D9604 /* Moviomatic.app */;
@@ -348,6 +348,7 @@
 			mainGroup = 828ADFDE27F81AB7001D9604;
 			packageReferences = (
 				8280FC9828180E4A00EFB99C /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				82E2440F28252688003FE21E /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 828ADFE827F81AB7001D9604 /* Products */;
 			projectDirPath = "";
@@ -640,10 +641,18 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		82E2440F28252688003FE21E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8280FC9928180E4A00EFB99C /* Kingfisher */ = {
+		82E2441028252688003FE21E /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8280FC9828180E4A00EFB99C /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;

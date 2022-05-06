@@ -35,6 +35,15 @@ class MovieContentVC: UIViewController {
             guard let imagePath = contentData.backdropPath else {
                 return
             }
+            self.lblTitle.text = contentData.title
+            self.lblOverview.text = contentData.overview
+            self.lblTagline.text = contentData.tagline
+            self.lblOriginalTitle.text = "Original Title:  \(String(describing: contentData.originalTitle!))"
+            self.lblReleaseDate.text = "Release Date:  \(String(describing: contentData.releaseDate!))"
+            self.lblStatus.text = "Status:\t\t\t\(String(describing: contentData.status!))"
+            self.lblBudget.text = "Budget:\t\t$\(String(describing: contentData.budget!))"
+            self.lblRevenue.text = "Revenue:\t\t$\(String(describing: contentData.releaseDate!))"
+            self.lblRuntime.text = "Runtime:\t\t\(String(describing: contentData.runtime!)) min"
             let url = URL(string: "https://image.tmdb.org/t/p/w500\(imagePath)")
             DispatchQueue.main.async {
                 if let imageData = try? Data(contentsOf: url!) {
@@ -42,15 +51,6 @@ class MovieContentVC: UIViewController {
                         self.contentImg.image = loadedImage
                     }
                 }
-                self.lblTitle.text = contentData.title
-                self.lblOverview.text = contentData.overview!
-                self.lblTagline.text = contentData.tagline
-                self.lblOriginalTitle.text = "Original Title:  \(String(describing: contentData.originalTitle!))"
-                self.lblReleaseDate.text = "Release Date:  \(String(describing: contentData.releaseDate!))"
-                self.lblStatus.text = "Status:\t\t\t\(String(describing: contentData.status!))"
-                self.lblBudget.text = "Budget:\t\t$\(String(describing: contentData.budget!))"
-                self.lblRevenue.text = "Revenue:\t\t$\(String(describing: contentData.releaseDate!))"
-                self.lblRuntime.text = "Runtime:\t\t\(String(describing: contentData.runtime!)) min"
                 self.genresCollection.reloadData()
                 self.castCollection.reloadData()
                 self.videoCollection.reloadData()
@@ -65,6 +65,8 @@ class MovieContentVC: UIViewController {
         castCollection.delegate = self
         videoCollection.dataSource = self
         videoCollection.delegate = self
+        genresCollection.tag = 1000
+        castCollection.tag = 2000
         videoCollection.tag = 3000
         genresCollection.register(GenresCollectionViewCell.nib(), forCellWithReuseIdentifier: "GenresCollectionViewCell")
         castCollection.register(CastCollectionViewCell.nib(), forCellWithReuseIdentifier: "CastCollectionViewCell")
@@ -74,7 +76,7 @@ class MovieContentVC: UIViewController {
 
 extension MovieContentVC: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
+        
         if collectionView.tag == 1000 {
             return self.contentViewModel.contentModelData?.genres!.count ?? 0
         } else if collectionView.tag == 2000 {

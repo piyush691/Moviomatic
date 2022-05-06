@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CategoryRowDelegate: AnyObject {
+    func cellTapped(_ info: Result)
+}
+
 class CollectionTableViewCell: UITableViewCell {
     
     lazy var tableViewModel = TableViewModel()
@@ -55,8 +59,7 @@ extension CollectionTableViewCell: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if delegate != nil {
-            delegate?.cellTapped(self.tableViewModel.tableModel[indexPath.row])
-        }
+        guard let delegate = delegate else { return }
+        delegate.cellTapped(self.tableViewModel.tableModel[indexPath.row])
     }
 }

@@ -7,9 +7,6 @@
 
 import UIKit
 import Kingfisher
-protocol CategoryRowDelegate: AnyObject {
-    func cellTapped(_ info: Result)
-}
 
 class MyCollectionViewCell: UICollectionViewCell {
     

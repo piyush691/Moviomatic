@@ -8,6 +8,7 @@
 import UIKit
 
 class GenresVC: UIViewController {
+    
     @IBOutlet var genresCollectionView: UICollectionView!
     lazy var genresViewModel = GenresViewModel()
     override func viewDidLoad() {
@@ -16,14 +17,17 @@ class GenresVC: UIViewController {
         view.backgroundColor = .black
         setupCollectionViews()
         genresViewModel.loadContent {[weak self] in
+            guard let self = self else { return }
             DispatchQueue.main.async {
-                self!.genresCollectionView.reloadData()
+                self.genresCollectionView.reloadData()
             }
         }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SelectedGenreSegue" {
             if let vc = segue.destination as? SelectedGenreVC {
@@ -31,6 +35,7 @@ class GenresVC: UIViewController {
             }
         }
     }
+    
     func setupCollectionViews() {
         genresCollectionView.dataSource = self
         genresCollectionView.delegate = self
@@ -47,6 +52,7 @@ class GenresVC: UIViewController {
 }
 
 extension GenresVC: UICollectionViewDataSource, UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return genresViewModel.genresModelData?.genres?.count ?? 0
     }
@@ -61,9 +67,9 @@ extension GenresVC: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.lblText.layer.borderWidth = 1
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let id = genresViewModel.genresModelData.genres![indexPath.row].id
         self.performSegue(withIdentifier: "SelectedGenreSegue", sender: id)
     }
-
 }

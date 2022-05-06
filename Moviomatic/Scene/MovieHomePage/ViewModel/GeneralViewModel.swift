@@ -25,6 +25,7 @@ class GeneralViewModel {
             completion()
         }
     }
+    
     func searchContent(_ query: String, _ completion: @escaping (() -> Void)) {
         let url = "https://api.themoviedb.org/3/search/movie?api_key=a1a1778171f931795dc131163e0c7399&page=\(currentPage)&query=\(query)"
         Parser<MovieModel>.fetchData(withURL: url) { [weak self] data in
@@ -40,5 +41,4 @@ class GeneralViewModel {
             completion()
         }
     }
-    
 }

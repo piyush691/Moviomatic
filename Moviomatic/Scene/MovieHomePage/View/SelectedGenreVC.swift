@@ -37,7 +37,6 @@ class SelectedGenreVC: UIViewController {
                     return
                 }
                 DispatchQueue.main.async {
-                    sleep(1)
                     self.generalCollectionView.reloadData()
                 }
             }
@@ -55,7 +54,7 @@ class SelectedGenreVC: UIViewController {
     func setupCollectionView() {
         generalCollectionView.dataSource = self
         generalCollectionView.delegate = self
-        //        generalCollectionView.isPagingEnabled = true
+      //generalCollectionView.isPagingEnabled = true
         generalCollectionView.clipsToBounds = true
         generalCollectionView.register(GeneralCollectionViewCell.nib(), forCellWithReuseIdentifier: "GeneralCollectionViewCell")
         generalCollectionView.register(LoadingCollectionReusableView.nib(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "LoadingCollectionReusableView")

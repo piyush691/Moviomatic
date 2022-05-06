@@ -11,15 +11,19 @@ class SearchVC: UIViewController, UISearchBarDelegate {
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
     var recentSearch = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        recentSearch = UserDefaults.standard.object(forKey: "recentSearch") as? [String] ?? [String]()
         searchBar.delegate = self
         tableView.register(RecentTableViewCell.nib(), forCellReuseIdentifier: "RecentTableViewCell")
         tableView.reloadData()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SearchSegue" {
             if let vc = segue.destination as? SelectedGenreVC {
@@ -27,22 +31,26 @@ class SearchVC: UIViewController, UISearchBarDelegate {
             }
         }
     }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if !searchBar.text!.isEmpty {
             let searchText: String = searchBar.text!
             searchBar.text = nil
             if !recentSearch.contains(where: {$0.caseInsensitiveCompare(searchText) == .orderedSame}) {
                 recentSearch.append(searchText)
+                UserDefaults.standard.set(recentSearch,forKey: "recentSearch")
             }
             self.performSegue(withIdentifier: "SearchSegue", sender: searchText)
         }
     }
 }
+
 extension SearchVC: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x:0, y:0, width:tableView.frame.size.width, height:25))
         let label = UILabel(frame: CGRect(x:10, y:0, width:tableView.frame.size.width, height:35))
@@ -53,6 +61,7 @@ extension SearchVC: UITableViewDataSource, UITableViewDelegate {
         label.textColor = .white
         return view
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recentSearch.count
     }
@@ -62,6 +71,7 @@ extension SearchVC: UITableViewDataSource, UITableViewDelegate {
         myCell.lblText.text = recentSearch[indexPath.row]
         return myCell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "SearchSegue", sender: recentSearch[indexPath.row])
     }

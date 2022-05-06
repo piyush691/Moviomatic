@@ -218,14 +218,7 @@
 		828AE01B27F99B3D001D9604 /* MovieHomePage */ = {
 			isa = PBXGroup;
 			children = (
-				826FA19828164FCF005EBB1E /* Reusable Cell */,
-				82F37720281524AE001A4E27 /* Recent Cell */,
-				8222986A28116D3E00E3A068 /* Video Cell */,
-				828AE00027F81B09001D9604 /* Table Cell */,
-				828ADFFE27F81AD0001D9604 /* Collection Cell */,
-				827E0A83280DB471005322E3 /* GeneralCell */,
-				82A96F7D280597E6009CA7C0 /* Cast Cell */,
-				828EF10C28043C4B0007E8AF /* Genres Cell */,
+				82C4687128258DF800021C52 /* Cells */,
 				828AE01E27F99B58001D9604 /* ViewModel */,
 				828AE01D27F99B53001D9604 /* View */,
 				828AE01C27F99B4C001D9604 /* Model */,
@@ -248,13 +241,13 @@
 		828AE01D27F99B53001D9604 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				827E0A6F280D2FD3005322E3 /* GenresVC.swift */,
 				828ADFF027F81AB7001D9604 /* Main.storyboard */,
 				828ADFEE27F81AB7001D9604 /* ViewController.swift */,
 				82BC7F1227FD49BA00B6B7AF /* MovieContentVC.storyboard */,
 				82BC7F1027FD462300B6B7AF /* MovieContentVC.swift */,
-				827E0A7F280DAE6A005322E3 /* SelectedGenreVC.swift */,
+				827E0A6F280D2FD3005322E3 /* GenresVC.swift */,
 				827E0A81280DAE74005322E3 /* SelectedGenreVC.storyboard */,
+				827E0A7F280DAE6A005322E3 /* SelectedGenreVC.swift */,
 				82F3771E28150FA4001A4E27 /* SearchVC.swift */,
 			);
 			path = View;
@@ -288,6 +281,21 @@
 				82A96F7F2805980B009CA7C0 /* CastCollectionViewCell.xib */,
 			);
 			path = "Cast Cell";
+			sourceTree = "<group>";
+		};
+		82C4687128258DF800021C52 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				828EF10C28043C4B0007E8AF /* Genres Cell */,
+				82A96F7D280597E6009CA7C0 /* Cast Cell */,
+				827E0A83280DB471005322E3 /* GeneralCell */,
+				828ADFFE27F81AD0001D9604 /* Collection Cell */,
+				828AE00027F81B09001D9604 /* Table Cell */,
+				8222986A28116D3E00E3A068 /* Video Cell */,
+				82F37720281524AE001A4E27 /* Recent Cell */,
+				826FA19828164FCF005EBB1E /* Reusable Cell */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		82F37720281524AE001A4E27 /* Recent Cell */ = {
